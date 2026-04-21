@@ -12,6 +12,8 @@ const statusMessage = document.getElementById('status-message');
 let parkedMarker = null;
 
 btnCheckin.addEventListener('click', function () {
+  statusMessage.textContent = 'Getting your location...';
+
   navigator.geolocation.getCurrentPosition(
     function (position) {
       const lat = position.coords.latitude;
@@ -33,7 +35,12 @@ btnCheckin.addEventListener('click', function () {
       btnCheckin.disabled = true;
     },
     function (error) {
-      statusMessage.textContent = 'Could not get location:' + error.message;
+      statusMessage.textContent = 'Could not get location: ' + error.message;
+    },
+    {
+      timeout: 10000,
+      enableHighAccuracy: true,
+      maximumAge: 0
     }
   );
 });
@@ -50,7 +57,7 @@ btnNavigate.addEventListener('click', function () {
 
 btnCheckout.addEventListener('click', function() {
   localStorage.removeItem('parkedLat');
-  localStorage.removeItem('removeLng');
+  localStorage.removeItem('parkedLng');
 
   if (parkedMarker) {
     map.removeLayer(parkedMarker);

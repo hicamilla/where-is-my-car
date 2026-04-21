@@ -1,3 +1,21 @@
+:root {
+  --color-primary: #4A6FA5;
+  --color-destructive: #FF6B6B;
+  --color-background: #F5F4F0;
+  --color-surface: #FFFFFF;
+  --color-border: #E4E2DE;
+  --color-text-primary: #484541;
+  --color-text-subtle: #92907B;
+  --color-text-disabled: #BDBBAD;
+  --color-disabled-bg: #E4E2DE;
+
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --font-base: sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +23,8 @@
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #f0f0f0;
+  font-family: var(--font-base);
+  background-color: var(--color-background);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,64 +34,85 @@ body {
 main {
   width: 100%;
   max-width: 390px;
-  background-color: white;
-  border-radius: 16px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--color-border);
 }
 
 header {
-  background-color: #333;
-  color: white;
-  padding: 20px;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding: 24px 20px;
   text-align: center;
-  width: 100%;
 }
 
 header h1 {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
   margin-bottom: 4px;
 }
 
 header p {
   font-size: 13px;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 #map {
   width: 100%;
-  height: 220px;
-  background-color: #e0e0e0;
+  height: 240px;
 }
 
 #status-card {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
+  background-color: var(--color-background);
+  margin: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border-bottom: 1px solid var(--color-border);
 }
 
 #status-message {
   font-size: 14px;
-  color: #666;
+  color: var(--color-text-subtle);
 }
 
 #actions {
-  padding: 16px 20px;
+  padding: 0 16px 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 button {
-  padding: 14px;
+  padding: 15px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  background-color: #333;
-  color: white;
+  width: 100%;
 }
 
-button:disabled {
-  background-color: #ccc;
-  color: #999;
+#btn-checkin {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+#btn-navigate {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+#btn-checkout {
+  background-color: var(--color-surface);
+  color: var(--color-destructive);
+  border: 1.5px solid var(--color-destructive);
+}
+
+button:disabled,
+#btn-checkout:disabled {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-text-disabled);
+  border: none;
   cursor: not-allowed;
 }
