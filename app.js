@@ -48,6 +48,24 @@ btnNavigate.addEventListener('click', function () {
   }
 });
 
+btnCheckout.addEventListener('click', function() {
+  localStorage.removeItem('parkedLat');
+  localStorage.removeItem('removeLng');
+
+  if (parkedMarker) {
+    map.removeLayer(parkedMarker);
+    parkedMarker = null;
+  }
+
+  map.setView([51.2328, 6.8467], 15);
+
+  statusMessage.textContent = 'No spot saved yet';
+
+  btnCheckin.disabled = false;
+  btnNavigate.disabled = true;
+  btnCheckout.disabled = true;
+});
+
 function loadSavedSpot() {
   const lat = localStorage.getItem('parkedLat');
   const lng = localStorage.getItem('parkedLng');
