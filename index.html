@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where's My Car?</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Where's My Car?</h1>
+    <p>Tap check in when you park</p>
+  </header>
+
+  <main>
+    <div id="map"></div>
+
+    <section id="status-card">
+      <p id="status-message">No spot saved yet</p>
+    </section>
+
+    <section id="actions">
+      <button id="btn-checkin">Check in here</button>
+      <button id="btn-navigate" disabled>Navigate to my car</button>
+      <button id="btn-checkout" disabled>Check out</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
