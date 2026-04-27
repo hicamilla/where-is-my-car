@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #4A6FA5;
-  --color-destructive: #FF6B6B;
+  --color-primary: #3D3D3D;
+  --color-destructive: #E8603C;
   --color-background: #F5F4F0;
   --color-surface: #FFFFFF;
   --color-border: #E4E2DE;
@@ -9,13 +9,13 @@
   --color-text-disabled: #BDBBAD;
   --color-disabled-bg: #E4E2DE;
   --color-bubble: #ECEAE6;
-  --color-bubble-active: #4A6FA5;
+  --color-bubble-active: #3D3D3D;
 
   --radius-lg: 24px;
   --radius-md: 12px;
   --radius-sm: 8px;
 
-  --font-base: sans-serif;
+  --font-base: 'Open Sans', sans-serif;
 }
 
 * {
@@ -68,6 +68,7 @@ header h1 {
   font-weight: 600;
   margin-bottom: 3px;
   color: var(--color-surface);
+  text-transform: uppercase;
 }
 
 header p {
