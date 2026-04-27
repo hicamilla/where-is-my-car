@@ -89,7 +89,12 @@ btnNavigate.addEventListener('click', function () {
   const lng = localStorage.getItem('parkedLng');
 
   if (lat && lng) {
-    const url = 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
+    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    const url = isApple
+      ? 'maps://?daddr=' + lat + ',' + lng
+      : 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
+    
     window.open(url, '_blank');
   }
 });
