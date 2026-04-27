@@ -8,10 +8,12 @@
   --color-text-subtle: #92907B;
   --color-text-disabled: #BDBBAD;
   --color-disabled-bg: #E4E2DE;
+  --color-bubble: #ECEAE6;
+  --color-bubble-active: #4A6FA5;
 
   --radius-lg: 24px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
 
   --font-base: sans-serif;
 }
@@ -22,65 +24,151 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: var(--font-base);
   background-color: var(--color-background);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 main {
   width: 100%;
-  max-width: 390px;
+  max-width: 430px;
   background-color: var(--color-background);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
 }
 
 header {
   background-color: var(--color-primary);
   color: var(--color-surface);
-  padding: 24px 20px;
+  padding: 20px 20px 22px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+#header-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
 }
 
 header h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  color: var(--color-surface);
 }
 
 header p {
-  font-size: 13px;
-  opacity: 0.8;
+  font-size: 12px;
+  opacity: 0.85;
+  color: var(--color-surface);
 }
 
 #map {
   width: 100%;
-  height: 240px;
+  height: 42vh;
+  flex-shrink: 0;
+}
+
+#bottom-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 28px;
+  gap: 14px;
 }
 
 #status-card {
-  background-color: var(--color-background);
-  margin: 16px;
-  padding: 14px 16px;
-  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--color-border);
 }
 
-#status-message {
-  font-size: 14px;
-  color: var(--color-text-subtle);
+#status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-text-disabled);
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
-#actions {
-  padding: 0 16px 24px;
+#status-dot.active {
+  background-color: var(--color-primary);
+}
+
+#status-message {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+#status-sub {
+  font-size: 12px;
+  color: var(--color-text-subtle);
+  margin-top: 3px;
+}
+
+#place-bubbles {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+#bubbles-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#bubbles-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.bubble {
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-bubble);
+  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  width: auto !important;
+  min-width: 0;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.bubble.selected {
+  background-color: var(--color-bubble-active);
+  color: var(--color-surface);
+  border-color: var(--color-bubble-active);
+}
+
+#actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
 }
 
 button {
@@ -109,10 +197,28 @@ button {
   border: 1.5px solid var(--color-destructive);
 }
 
-button:disabled,
-#btn-checkout:disabled {
-  background-color: var(--color-disabled-bg);
-  color: var(--color-text-disabled);
-  border: none;
-  cursor: not-allowed;
+.hidden {
+  display: none;
+}
+
+#toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-text-primary);
+  color: var(--color-surface);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  opacity: 0.4;
+  background: rgba(245, 244, 240, 0.8) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
 }

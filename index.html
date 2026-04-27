@@ -13,21 +13,42 @@
 <body>
   <main>
     <header>
+      <div id="header-icon">🚗</div>
       <h1>Where's My Car?</h1>
-      <p>Tap check in when you park</p>
+      <p id="header-sub">Select a spot type then tap Park here</p>
     </header>
 
     <div id="map"></div>
 
-    <section id="status-card">
-      <p id="status-message">No spot saved yet</p>
-    </section>
+    <div id="bottom-panel">
+      <div id="status-card">
+        <div id="status-dot"></div>
+        <div>
+          <p id="status-message">No spot saved yet</p>
+          <p id="status-sub">Choose a type and tap Park here</p>
+        </div>
+      </div>
 
-    <section id="actions">
-      <button id="btn-checkin">Check in here</button>
-      <button id="btn-navigate" disabled>Navigate to my car</button>
-      <button id="btn-checkout" disabled>Check out</button>
-    </section>
+      <div id="place-bubbles">
+        <p id="bubbles-label">Where are you parking?</p>
+        <div id="bubbles-wrap">
+          <button class="bubble" data-value="Mall">🛍️ Mall</button>
+          <button class="bubble" data-value="Supermarket">🛒 Supermarket</button>
+          <button class="bubble" data-value="Street parking">🚗 Street</button>
+          <button class="bubble" data-value="Parking lot">🅿️ Parking lot</button>
+          <button class="bubble" data-value="Airport">✈️ Airport</button>
+          <button class="bubble" data-value="Other">📍 Other</button>
+        </div>
+      </div>
+
+      <section id="actions">
+        <button id="btn-checkin">Park here</button>
+        <button id="btn-navigate" class="hidden" disabled>Take me to my car</button>
+        <button id="btn-checkout" class="hidden" disabled>Leave this spot</button>
+      </section>
+    </div>
+
+    <div id="toast" class="hidden">Please choose a spot type first</div>
   </main>
 
   <script src="app.js"></script>
